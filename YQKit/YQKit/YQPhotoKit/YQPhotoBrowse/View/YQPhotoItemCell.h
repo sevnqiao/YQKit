@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface YQPhotoItemCell : UICollectionViewCell
-- (void)configImageViewWith:(id)image;
+- (void)configImageViewWith:(id)image tapHandle:(void(^)(void))tapHandle;
+- (void)resetToDefault;
 @end

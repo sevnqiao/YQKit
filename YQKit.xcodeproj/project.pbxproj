@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2610C1B621226B75008AAE9A /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 2610C1B521226B75008AAE9A /* back.png */; };
+		2610C1B92122755C008AAE9A /* YQPhotoNavBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2610C1B82122755C008AAE9A /* YQPhotoNavBarView.m */; };
+		2610C1BF2122A4D5008AAE9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2610C1BE2122A4D5008AAE9A /* LaunchScreen.xib */; };
 		26B847AB2121A23C00A39637 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B847AA2121A23C00A39637 /* AppDelegate.m */; };
 		26B847AE2121A23C00A39637 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B847AD2121A23C00A39637 /* ViewController.m */; };
-		26B847B12121A23C00A39637 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26B847AF2121A23C00A39637 /* Main.storyboard */; };
 		26B847B32121A23F00A39637 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26B847B22121A23F00A39637 /* Assets.xcassets */; };
-		26B847B62121A23F00A39637 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26B847B42121A23F00A39637 /* LaunchScreen.storyboard */; };
 		26B847B92121A23F00A39637 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B847B82121A23F00A39637 /* main.m */; };
 		26B847CB2121A3D900A39637 /* YQPhotoBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B847C92121A3D900A39637 /* YQPhotoBrowseViewController.m */; };
 		26B847CE2121A4E000A39637 /* YQPhotoItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B847CD2121A4E000A39637 /* YQPhotoItemCell.m */; };
@@ -20,14 +21,16 @@
 
 /* Begin PBXFileReference section */
 		01A6B978966F54F0AB37BFCC /* Pods-YQKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YQKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-YQKit/Pods-YQKit.release.xcconfig"; sourceTree = "<group>"; };
+		2610C1B521226B75008AAE9A /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		2610C1B72122755C008AAE9A /* YQPhotoNavBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQPhotoNavBarView.h; sourceTree = "<group>"; };
+		2610C1B82122755C008AAE9A /* YQPhotoNavBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQPhotoNavBarView.m; sourceTree = "<group>"; };
+		2610C1BE2122A4D5008AAE9A /* LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		26B847A62121A23B00A39637 /* YQKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YQKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B847A92121A23C00A39637 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		26B847AA2121A23C00A39637 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		26B847AC2121A23C00A39637 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		26B847AD2121A23C00A39637 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		26B847B02121A23C00A39637 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		26B847B22121A23F00A39637 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		26B847B52121A23F00A39637 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26B847B72121A23F00A39637 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26B847B82121A23F00A39637 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		26B847C92121A3D900A39637 /* YQPhotoBrowseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQPhotoBrowseViewController.m; sourceTree = "<group>"; };
@@ -58,6 +61,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2610C1B221226A93008AAE9A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2610C1B521226B75008AAE9A /* back.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		26B8479D2121A23B00A39637 = {
 			isa = PBXGroup;
 			children = (
@@ -84,9 +95,8 @@
 				26B847AA2121A23C00A39637 /* AppDelegate.m */,
 				26B847AC2121A23C00A39637 /* ViewController.h */,
 				26B847AD2121A23C00A39637 /* ViewController.m */,
-				26B847AF2121A23C00A39637 /* Main.storyboard */,
+				2610C1BE2122A4D5008AAE9A /* LaunchScreen.xib */,
 				26B847B22121A23F00A39637 /* Assets.xcassets */,
-				26B847B42121A23F00A39637 /* LaunchScreen.storyboard */,
 				26B847B72121A23F00A39637 /* Info.plist */,
 				26B847B82121A23F00A39637 /* main.m */,
 			);
@@ -123,6 +133,7 @@
 				26B847C82121A3D900A39637 /* Controller */,
 				26B847C72121A3D900A39637 /* Tools */,
 				26B847C62121A3D900A39637 /* View */,
+				2610C1B221226A93008AAE9A /* Resources */,
 			);
 			path = YQPhotoBrowse;
 			sourceTree = "<group>";
@@ -132,6 +143,8 @@
 			children = (
 				26B847CC2121A4E000A39637 /* YQPhotoItemCell.h */,
 				26B847CD2121A4E000A39637 /* YQPhotoItemCell.m */,
+				2610C1B72122755C008AAE9A /* YQPhotoNavBarView.h */,
+				2610C1B82122755C008AAE9A /* YQPhotoNavBarView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -219,9 +232,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26B847B62121A23F00A39637 /* LaunchScreen.storyboard in Resources */,
+				2610C1B621226B75008AAE9A /* back.png in Resources */,
+				2610C1BF2122A4D5008AAE9A /* LaunchScreen.xib in Resources */,
 				26B847B32121A23F00A39637 /* Assets.xcassets in Resources */,
-				26B847B12121A23C00A39637 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,31 +269,13 @@
 				26B847CE2121A4E000A39637 /* YQPhotoItemCell.m in Sources */,
 				26B847AE2121A23C00A39637 /* ViewController.m in Sources */,
 				26B847B92121A23F00A39637 /* main.m in Sources */,
+				2610C1B92122755C008AAE9A /* YQPhotoNavBarView.m in Sources */,
 				26B847AB2121A23C00A39637 /* AppDelegate.m in Sources */,
 				26B847CB2121A3D900A39637 /* YQPhotoBrowseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		26B847AF2121A23C00A39637 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				26B847B02121A23C00A39637 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		26B847B42121A23F00A39637 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				26B847B52121A23F00A39637 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		26B847BA2121A23F00A39637 /* Debug */ = {
@@ -401,6 +396,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69H7QSB2RS;
 				INFOPLIST_FILE = YQKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -419,6 +415,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69H7QSB2RS;
 				INFOPLIST_FILE = YQKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

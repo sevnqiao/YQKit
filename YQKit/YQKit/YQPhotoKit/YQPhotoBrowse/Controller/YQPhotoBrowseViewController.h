@@ -10,4 +10,9 @@
 
 @interface YQPhotoBrowseViewController : UIViewController
 
+/**
+ * 数据源 （NSString, NSUrl, UIImage）
+ */
+@property (nonatomic, strong) NSArray *dataSourceArray;
+@property (nonatomic, assign) NSInteger currentIndex;
 @end
