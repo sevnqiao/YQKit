@@ -20,11 +20,6 @@
 
 @implementation YQPhotoBrowseViewController
 
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -34,7 +29,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex inSection:0]
                                 atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
                                         animated:NO];
@@ -95,7 +90,7 @@
 - (void)showHideNavBarView
 {
     BOOL isShow = self.navBarView.frame.origin.y < 0;
-    [[UIApplication sharedApplication] setStatusBarHidden:!isShow];
+    [[UIApplication sharedApplication] setStatusBarHidden:!isShow withAnimation:UIStatusBarAnimationSlide];
     [UIView animateWithDuration:0.25 animations:^{
         CGRect rect = self.navBarView.frame;
         rect.origin.y = isShow ? 0 :(-rect.size.height);
