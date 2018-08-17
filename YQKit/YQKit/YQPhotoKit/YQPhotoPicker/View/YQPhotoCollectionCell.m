@@ -27,15 +27,30 @@
 - (void)configCellWithAssetModel:(YQAssetModel *)assetModel targetSize:(CGSize)targetSize localIdentifier:(NSString *)localIdentifier
 {
     self.localIdentifier = localIdentifier;
-    [[YQAlbumManager sharedManager] getPhotoWithAsset:assetModel.asset photoSize:targetSize complete:^(UIImage *image) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if ([self.localIdentifier isEqualToString:assetModel.asset.localIdentifier]) {
-                self.assetImageView.image = image;
-                assetModel.thumbImage = image;
-            }
-        });
-    }];
     
+    if (assetModel.thumbImage) {
+        self.assetImageView.image = assetModel.thumbImage;
+    } else {
+        [[YQAlbumManager sharedManager] getPhotoWithAsset:assetModel.asset photoSize:targetSize isSynchronous:NO complete:^(UIImage *image) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.localIdentifier isEqualToString:assetModel.asset.localIdentifier]) {
+                    self.assetImageView.image = image;
+                    assetModel.thumbImage = image;
+                }
+            });
+        }];
+    }
+    
+    if ([[YQAlbumManager sharedManager] isContainObject:assetModel.asset.localIdentifier]) {
+        assetModel.selected = YES;
+    }
     self.selectButton.selected = assetModel.isSelected;
 }
+
+- (IBAction)select:(UIButton *)sender {
+    if (self.selectHandle) {
+        self.selectHandle();
+    }
+}
+
 @end

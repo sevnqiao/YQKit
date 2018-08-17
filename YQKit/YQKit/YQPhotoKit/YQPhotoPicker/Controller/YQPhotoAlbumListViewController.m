@@ -45,6 +45,7 @@
 }
 - (void)cancel
 {
+    [[YQAlbumManager sharedManager] removeAllObjects];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -12,20 +12,25 @@
 @class YQAlbumModel,YQAssetModel;
 
 @interface YQAlbumManager : NSObject
-@property (nonatomic, strong) NSMutableArray *selectArray;
+@property (nonatomic, strong, readonly) NSArray *selectArray;
+@property (nonatomic, assign) BOOL isOriginal;
 
 + (YQAlbumManager *)sharedManager;
 + (void)requestAuthorization:(void(^)(PHAuthorizationStatus status))handler;
 
 - (void)getCamerRollAlbumWithComplete:(void(^)(YQAlbumModel *model))complete;
 - (void)getAllAlbumsWithCompletion:(void (^) (NSArray *allAlbumsArray))completion;
+- (void)getPhotoWithAsset:(PHAsset *)asset photoSize:(CGSize)photoSize isSynchronous:(BOOL)isSynchronous complete:(void(^)(UIImage *image))complete;
 - (NSArray *)getAssetWithFetchResult:(PHFetchResult *)fetchResult;
-- (void)getPhotoWithAsset:(PHAsset *)asset photoSize:(CGSize)photoSize complete:(void(^)(UIImage *image))complete;
+
 - (void)startCaching:(NSArray *)assetArray targetSize:(CGSize)targetSize options:(nullable PHImageRequestOptions *)options;
+- (void)stopCaching:(NSArray *)assetArray targetSize:(CGSize)targetSize options:(nullable PHImageRequestOptions *)options;
 - (void)stopCachingImagesForAllAssets;
 
+- (void)removeAllObjects;
 - (void)addObject:(YQAssetModel *)assetModel;
 - (void)deleteObject:(YQAssetModel *)assetModel;
+- (BOOL)isContainObject:(NSString *)localIdentifier;
 
-
+- (CGFloat)caculateTotalSize;
 @end

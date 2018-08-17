@@ -11,5 +11,6 @@
 @class YQAssetModel;
 
 @interface YQPhotoCollectionCell : UICollectionViewCell
+@property (nonatomic, copy) void(^selectHandle)(void);
 - (void)configCellWithAssetModel:(YQAssetModel *)assetModel targetSize:(CGSize)targetSize localIdentifier:(NSString *)localIdentifier;
 @end

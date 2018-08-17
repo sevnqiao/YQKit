@@ -38,7 +38,7 @@
 {
     NSArray *arr = [[YQAlbumManager sharedManager] getAssetWithFetchResult:albumModel.albumResult];
     YQAssetModel *assetModel = arr.count > 0 ? arr.firstObject : nil;
-    [[YQAlbumManager sharedManager] getPhotoWithAsset:assetModel.asset photoSize:CGSizeMake(65, 65) complete:^(UIImage *image) {
+    [[YQAlbumManager sharedManager] getPhotoWithAsset:assetModel.asset photoSize:CGSizeMake(65, 65) isSynchronous:NO complete:^(UIImage *image) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.albumImageView.image = image;
         });

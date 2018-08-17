@@ -25,8 +25,14 @@
 		26FB03602123F9DD00D2F226 /* YQPhotoAlbumListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FB035E2123F9DD00D2F226 /* YQPhotoAlbumListCell.xib */; };
 		26FB0364212400F500D2F226 /* YQPhotoCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FB0362212400F500D2F226 /* YQPhotoCollectionCell.m */; };
 		26FB0365212400F500D2F226 /* YQPhotoCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FB0363212400F500D2F226 /* YQPhotoCollectionCell.xib */; };
-		26FB036C2124305900D2F226 /* photo_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26FB036A2124305900D2F226 /* photo_select@2x.png */; };
-		26FB036D2124305900D2F226 /* photo_unselect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26FB036B2124305900D2F226 /* photo_unselect@2x.png */; };
+		26FB03702125563E00D2F226 /* YQPhotoAlbumPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FB036F2125563E00D2F226 /* YQPhotoAlbumPreviewViewController.m */; };
+		26FB037721255B7900D2F226 /* YQPhotoPreviewItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FB037621255B7900D2F226 /* YQPhotoPreviewItemCell.m */; };
+		26FB037D2125605100D2F226 /* YQPhotoPreviewNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FB037B2125605100D2F226 /* YQPhotoPreviewNavBar.m */; };
+		26FB03862125780C00D2F226 /* photo_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26FB03842125780B00D2F226 /* photo_select@2x.png */; };
+		26FB03872125780C00D2F226 /* photo_unselect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26FB03852125780C00D2F226 /* photo_unselect@2x.png */; };
+		26FB038A2125800400D2F226 /* YQPhotoAlbumDetailToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FB03892125800400D2F226 /* YQPhotoAlbumDetailToolView.m */; };
+		26FB038D2125829A00D2F226 /* original_unselect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26FB038B2125829900D2F226 /* original_unselect@2x.png */; };
+		26FB038E2125829A00D2F226 /* original_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26FB038C2125829900D2F226 /* original_select@2x.png */; };
 		66C7AD7F4A4DE666125EA20B /* libPods-YQKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E477981A29AA96FE57673D4 /* libPods-YQKit.a */; };
 /* End PBXBuildFile section */
 
@@ -64,8 +70,18 @@
 		26FB0361212400F500D2F226 /* YQPhotoCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQPhotoCollectionCell.h; sourceTree = "<group>"; };
 		26FB0362212400F500D2F226 /* YQPhotoCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQPhotoCollectionCell.m; sourceTree = "<group>"; };
 		26FB0363212400F500D2F226 /* YQPhotoCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQPhotoCollectionCell.xib; sourceTree = "<group>"; };
-		26FB036A2124305900D2F226 /* photo_select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_select@2x.png"; sourceTree = "<group>"; };
-		26FB036B2124305900D2F226 /* photo_unselect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_unselect@2x.png"; sourceTree = "<group>"; };
+		26FB036E2125563E00D2F226 /* YQPhotoAlbumPreviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQPhotoAlbumPreviewViewController.h; sourceTree = "<group>"; };
+		26FB036F2125563E00D2F226 /* YQPhotoAlbumPreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQPhotoAlbumPreviewViewController.m; sourceTree = "<group>"; };
+		26FB037521255B7900D2F226 /* YQPhotoPreviewItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQPhotoPreviewItemCell.h; sourceTree = "<group>"; };
+		26FB037621255B7900D2F226 /* YQPhotoPreviewItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQPhotoPreviewItemCell.m; sourceTree = "<group>"; };
+		26FB037B2125605100D2F226 /* YQPhotoPreviewNavBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQPhotoPreviewNavBar.m; sourceTree = "<group>"; };
+		26FB037C2125605100D2F226 /* YQPhotoPreviewNavBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQPhotoPreviewNavBar.h; sourceTree = "<group>"; };
+		26FB03842125780B00D2F226 /* photo_select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_select@2x.png"; sourceTree = "<group>"; };
+		26FB03852125780C00D2F226 /* photo_unselect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_unselect@2x.png"; sourceTree = "<group>"; };
+		26FB03882125800400D2F226 /* YQPhotoAlbumDetailToolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQPhotoAlbumDetailToolView.h; sourceTree = "<group>"; };
+		26FB03892125800400D2F226 /* YQPhotoAlbumDetailToolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQPhotoAlbumDetailToolView.m; sourceTree = "<group>"; };
+		26FB038B2125829900D2F226 /* original_unselect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "original_unselect@2x.png"; sourceTree = "<group>"; };
+		26FB038C2125829900D2F226 /* original_select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "original_select@2x.png"; sourceTree = "<group>"; };
 		4E477981A29AA96FE57673D4 /* libPods-YQKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YQKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C84C26FF4C8A404AFC6A21A /* Pods-YQKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YQKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YQKit/Pods-YQKit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,24 +168,10 @@
 		26B847C12121A38000A39637 /* YQPhotoPicker */ = {
 			isa = PBXGroup;
 			children = (
-				2610C1C02122AD57008AAE9A /* YQPhotoPickerViewController.h */,
-				2610C1C12122AD57008AAE9A /* YQPhotoPickerViewController.m */,
-				2610C1C32122B739008AAE9A /* YQPhotoAlbumListViewController.h */,
-				2610C1C42122B739008AAE9A /* YQPhotoAlbumListViewController.m */,
-				2610C1CC2122CCB6008AAE9A /* YQPhotoAlbumDetailViewController.h */,
-				2610C1CD2122CCB6008AAE9A /* YQPhotoAlbumDetailViewController.m */,
-				2610C1C62122BBE5008AAE9A /* YQAlbumManager.h */,
-				2610C1C72122BBE5008AAE9A /* YQAlbumManager.m */,
-				2610C1C92122C919008AAE9A /* YQAlbumModel.h */,
-				2610C1CA2122C919008AAE9A /* YQAlbumModel.m */,
-				26FB035C2123F9DD00D2F226 /* YQPhotoAlbumListCell.h */,
-				26FB035D2123F9DD00D2F226 /* YQPhotoAlbumListCell.m */,
-				26FB035E2123F9DD00D2F226 /* YQPhotoAlbumListCell.xib */,
-				26FB0361212400F500D2F226 /* YQPhotoCollectionCell.h */,
-				26FB0362212400F500D2F226 /* YQPhotoCollectionCell.m */,
-				26FB0363212400F500D2F226 /* YQPhotoCollectionCell.xib */,
-				26FB036A2124305900D2F226 /* photo_select@2x.png */,
-				26FB036B2124305900D2F226 /* photo_unselect@2x.png */,
+				26FB037221255AF300D2F226 /* Controller */,
+				26FB037421255B1500D2F226 /* model */,
+				26FB037321255B0500D2F226 /* View */,
+				26FB037121255AE300D2F226 /* Resources */,
 			);
 			path = YQPhotoPicker;
 			sourceTree = "<group>";
@@ -210,6 +212,62 @@
 				26B847C92121A3D900A39637 /* YQPhotoBrowseViewController.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		26FB037121255AE300D2F226 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				26FB038C2125829900D2F226 /* original_select@2x.png */,
+				26FB038B2125829900D2F226 /* original_unselect@2x.png */,
+				26FB03842125780B00D2F226 /* photo_select@2x.png */,
+				26FB03852125780C00D2F226 /* photo_unselect@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		26FB037221255AF300D2F226 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2610C1C02122AD57008AAE9A /* YQPhotoPickerViewController.h */,
+				2610C1C12122AD57008AAE9A /* YQPhotoPickerViewController.m */,
+				2610C1C32122B739008AAE9A /* YQPhotoAlbumListViewController.h */,
+				2610C1C42122B739008AAE9A /* YQPhotoAlbumListViewController.m */,
+				2610C1CC2122CCB6008AAE9A /* YQPhotoAlbumDetailViewController.h */,
+				2610C1CD2122CCB6008AAE9A /* YQPhotoAlbumDetailViewController.m */,
+				26FB036E2125563E00D2F226 /* YQPhotoAlbumPreviewViewController.h */,
+				26FB036F2125563E00D2F226 /* YQPhotoAlbumPreviewViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		26FB037321255B0500D2F226 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				26FB035C2123F9DD00D2F226 /* YQPhotoAlbumListCell.h */,
+				26FB035D2123F9DD00D2F226 /* YQPhotoAlbumListCell.m */,
+				26FB035E2123F9DD00D2F226 /* YQPhotoAlbumListCell.xib */,
+				26FB0361212400F500D2F226 /* YQPhotoCollectionCell.h */,
+				26FB0362212400F500D2F226 /* YQPhotoCollectionCell.m */,
+				26FB0363212400F500D2F226 /* YQPhotoCollectionCell.xib */,
+				26FB037521255B7900D2F226 /* YQPhotoPreviewItemCell.h */,
+				26FB037621255B7900D2F226 /* YQPhotoPreviewItemCell.m */,
+				26FB037C2125605100D2F226 /* YQPhotoPreviewNavBar.h */,
+				26FB037B2125605100D2F226 /* YQPhotoPreviewNavBar.m */,
+				26FB03882125800400D2F226 /* YQPhotoAlbumDetailToolView.h */,
+				26FB03892125800400D2F226 /* YQPhotoAlbumDetailToolView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		26FB037421255B1500D2F226 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				2610C1C62122BBE5008AAE9A /* YQAlbumManager.h */,
+				2610C1C72122BBE5008AAE9A /* YQAlbumManager.m */,
+				2610C1C92122C919008AAE9A /* YQAlbumModel.h */,
+				2610C1CA2122C919008AAE9A /* YQAlbumModel.m */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		3192D9A2598BEC0D0D202290 /* Pods */ = {
@@ -279,13 +337,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26FB038E2125829A00D2F226 /* original_select@2x.png in Resources */,
 				2610C1B621226B75008AAE9A /* back.png in Resources */,
 				26FB0365212400F500D2F226 /* YQPhotoCollectionCell.xib in Resources */,
 				2610C1BF2122A4D5008AAE9A /* LaunchScreen.xib in Resources */,
-				26FB036C2124305900D2F226 /* photo_select@2x.png in Resources */,
+				26FB03862125780C00D2F226 /* photo_select@2x.png in Resources */,
+				26FB038D2125829A00D2F226 /* original_unselect@2x.png in Resources */,
 				26FB03602123F9DD00D2F226 /* YQPhotoAlbumListCell.xib in Resources */,
 				26B847B32121A23F00A39637 /* Assets.xcassets in Resources */,
-				26FB036D2124305900D2F226 /* photo_unselect@2x.png in Resources */,
+				26FB03872125780C00D2F226 /* photo_unselect@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,16 +378,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				2610C1C22122AD57008AAE9A /* YQPhotoPickerViewController.m in Sources */,
+				26FB037D2125605100D2F226 /* YQPhotoPreviewNavBar.m in Sources */,
 				2610C1CB2122C919008AAE9A /* YQAlbumModel.m in Sources */,
 				26B847CE2121A4E000A39637 /* YQPhotoItemCell.m in Sources */,
 				26B847AE2121A23C00A39637 /* ViewController.m in Sources */,
 				26B847B92121A23F00A39637 /* main.m in Sources */,
 				2610C1C82122BBE5008AAE9A /* YQAlbumManager.m in Sources */,
+				26FB03702125563E00D2F226 /* YQPhotoAlbumPreviewViewController.m in Sources */,
 				26FB035F2123F9DD00D2F226 /* YQPhotoAlbumListCell.m in Sources */,
 				2610C1C52122B739008AAE9A /* YQPhotoAlbumListViewController.m in Sources */,
 				26FB0364212400F500D2F226 /* YQPhotoCollectionCell.m in Sources */,
 				2610C1B92122755C008AAE9A /* YQPhotoNavBarView.m in Sources */,
+				26FB038A2125800400D2F226 /* YQPhotoAlbumDetailToolView.m in Sources */,
 				26B847AB2121A23C00A39637 /* AppDelegate.m in Sources */,
+				26FB037721255B7900D2F226 /* YQPhotoPreviewItemCell.m in Sources */,
 				26B847CB2121A3D900A39637 /* YQPhotoBrowseViewController.m in Sources */,
 				2610C1CE2122CCB6008AAE9A /* YQPhotoAlbumDetailViewController.m in Sources */,
 			);
@@ -454,7 +518,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69H7QSB2RS;
 				INFOPLIST_FILE = YQKit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -473,7 +537,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69H7QSB2RS;
 				INFOPLIST_FILE = YQKit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

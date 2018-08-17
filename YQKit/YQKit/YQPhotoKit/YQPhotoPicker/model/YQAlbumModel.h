@@ -54,6 +54,12 @@ typedef NS_ENUM (NSInteger, YQAssetMediaType) {
 @property (nonatomic, strong) PHAsset *asset;
 
 /**
+ *  用来保存下载好的原图
+ */
+@property (nonatomic, strong) UIImage *originalImage;
+
+
+/**
  *  用来保存下载好的高清大图
  */
 @property (nonatomic, strong) UIImage *highImage;
@@ -75,6 +81,8 @@ typedef NS_ENUM (NSInteger, YQAssetMediaType) {
  *  视频文件时，视频文件的时长
  */
 @property (nonatomic, copy) NSString *timeLength;
+
+@property (nonatomic, assign) long dataLength;
 
 
 + (YQAssetModel *)modelWithAsset:(PHAsset *)asset;
