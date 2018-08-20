@@ -19,7 +19,7 @@ static YQAlbumManager *myManager = nil;
 @interface YQAlbumManager ()
 @property (nonatomic, strong) PHCachingImageManager *cachingImageManager;
 @property (nonatomic, strong) NSMutableDictionary *selectDictionary;
-@property (nonatomic, strong) NSArray *selectArray;
+@property (nonatomic, strong) NSMutableArray *selectArray;
 @end
 
 @implementation YQAlbumManager
@@ -45,9 +45,12 @@ static YQAlbumManager *myManager = nil;
     return _cachingImageManager;
 }
 
-- (NSArray *)selectArray
+- (NSMutableArray *)selectArray
 {
-    return self.selectDictionary.allValues;
+    if (!_selectArray) {
+        _selectArray = [NSMutableArray array];
+    }
+    return _selectArray;
 }
 
 - (NSMutableDictionary *)selectDictionary
@@ -241,11 +244,16 @@ static YQAlbumManager *myManager = nil;
 - (void)removeAllObjects
 {
     [self.selectDictionary removeAllObjects];
+    [self.selectArray removeAllObjects];
 }
 
 - (void)addObject:(YQAssetModel *)assetModel
 {
     assetModel.selected = YES;
+    
+    if (![self isContainObject:assetModel.asset.localIdentifier]) {
+        [self.selectArray addObject:assetModel];
+    }
     [self.selectDictionary setValue:assetModel forKey:assetModel.asset.localIdentifier];
     
     CGSize size = CGSizeMake(KSCREEN_WIDTH, KSCREEN_HEIGHT-KNAVBAR_HEIGHT);
@@ -253,11 +261,17 @@ static YQAlbumManager *myManager = nil;
         size = CGSizeZero;
     }
     [self startCaching:@[assetModel.asset] targetSize:size options:nil];
+    
+
 }
 
 - (void)deleteObject:(YQAssetModel *)assetModel
 {
     assetModel.selected = NO;
+    
+    if ([self isContainObject:assetModel.asset.localIdentifier]) {
+        [self.selectArray removeObject:[self deleteObjectWithLocalIdentifier:assetModel.asset.localIdentifier]];
+    }
     [self.selectDictionary removeObjectForKey:assetModel.asset.localIdentifier];
     
     CGSize size = CGSizeMake(KSCREEN_WIDTH, KSCREEN_HEIGHT-KNAVBAR_HEIGHT);
@@ -272,17 +286,17 @@ static YQAlbumManager *myManager = nil;
     return [self.selectDictionary.allKeys containsObject:localIdentifier];
 }
 
-#pragma mark - caculate size
-- (CGFloat)caculateTotalSize
+- (YQAssetModel *)deleteObjectWithLocalIdentifier:(NSString *)localIdentifier
 {
-    __block CGFloat totalSize = 0;
+    __block YQAssetModel *targetAssetModel = nil;
     [self.selectArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         YQAssetModel *assetModel = obj;
-        totalSize += assetModel.dataLength;
+        if ([assetModel.asset.localIdentifier isEqualToString:localIdentifier]) {
+            targetAssetModel = assetModel;
+            *stop = YES;
+        }
     }];
-    return totalSize;
+    return targetAssetModel;
 }
-
-
 
 @end

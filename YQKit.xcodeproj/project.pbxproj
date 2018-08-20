@@ -15,6 +15,7 @@
 		2610C1C82122BBE5008AAE9A /* YQAlbumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2610C1C72122BBE5008AAE9A /* YQAlbumManager.m */; };
 		2610C1CB2122C919008AAE9A /* YQAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2610C1CA2122C919008AAE9A /* YQAlbumModel.m */; };
 		2610C1CE2122CCB6008AAE9A /* YQPhotoAlbumDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2610C1CD2122CCB6008AAE9A /* YQPhotoAlbumDetailViewController.m */; };
+		266071302126A0290085942E /* YQPhotoAlbumDetailBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2660712F2126A0290085942E /* YQPhotoAlbumDetailBottomView.m */; };
 		26B847AB2121A23C00A39637 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B847AA2121A23C00A39637 /* AppDelegate.m */; };
 		26B847AE2121A23C00A39637 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B847AD2121A23C00A39637 /* ViewController.m */; };
 		26B847B32121A23F00A39637 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26B847B22121A23F00A39637 /* Assets.xcassets */; };
@@ -52,6 +53,8 @@
 		2610C1CA2122C919008AAE9A /* YQAlbumModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQAlbumModel.m; sourceTree = "<group>"; };
 		2610C1CC2122CCB6008AAE9A /* YQPhotoAlbumDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQPhotoAlbumDetailViewController.h; sourceTree = "<group>"; };
 		2610C1CD2122CCB6008AAE9A /* YQPhotoAlbumDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQPhotoAlbumDetailViewController.m; sourceTree = "<group>"; };
+		2660712E2126A0290085942E /* YQPhotoAlbumDetailBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQPhotoAlbumDetailBottomView.h; sourceTree = "<group>"; };
+		2660712F2126A0290085942E /* YQPhotoAlbumDetailBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQPhotoAlbumDetailBottomView.m; sourceTree = "<group>"; };
 		26B847A62121A23B00A39637 /* YQKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YQKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B847A92121A23C00A39637 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		26B847AA2121A23C00A39637 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -255,6 +258,8 @@
 				26FB037B2125605100D2F226 /* YQPhotoPreviewNavBar.m */,
 				26FB03882125800400D2F226 /* YQPhotoAlbumDetailToolView.h */,
 				26FB03892125800400D2F226 /* YQPhotoAlbumDetailToolView.m */,
+				2660712E2126A0290085942E /* YQPhotoAlbumDetailBottomView.h */,
+				2660712F2126A0290085942E /* YQPhotoAlbumDetailBottomView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -378,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2610C1C22122AD57008AAE9A /* YQPhotoPickerViewController.m in Sources */,
+				266071302126A0290085942E /* YQPhotoAlbumDetailBottomView.m in Sources */,
 				26FB037D2125605100D2F226 /* YQPhotoPreviewNavBar.m in Sources */,
 				2610C1CB2122C919008AAE9A /* YQAlbumModel.m in Sources */,
 				26B847CE2121A4E000A39637 /* YQPhotoItemCell.m in Sources */,

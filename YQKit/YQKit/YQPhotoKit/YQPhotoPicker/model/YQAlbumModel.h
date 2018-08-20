@@ -82,9 +82,6 @@ typedef NS_ENUM (NSInteger, YQAssetMediaType) {
  */
 @property (nonatomic, copy) NSString *timeLength;
 
-@property (nonatomic, assign) long dataLength;
-
-
 + (YQAssetModel *)modelWithAsset:(PHAsset *)asset;
 
 @end

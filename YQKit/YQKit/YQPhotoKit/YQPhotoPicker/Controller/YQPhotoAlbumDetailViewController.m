@@ -156,11 +156,9 @@
         if ([YQAlbumManager sharedManager].isOriginal) {
             model.originalImage = image;
         } else {
+            model.originalImage = image;
             model.highImage = image;
         }
-        model.dataLength = [self calulateImageFileSize:image];
-        
-        [self caculateTotalSize];
     }];
 }
 
@@ -169,22 +167,8 @@
     YQPhotoAlbumPreviewViewController *previewController = [[YQPhotoAlbumPreviewViewController alloc]init];
     previewController.isPreview = isPreview;
     previewController.defautIndex = currentIndex;
-    previewController.dataSourceArray = dataSource;
+    previewController.dataSourceArray = [dataSource copy];
     [self.navigationController pushViewController:previewController animated:YES];
-}
-
-- (void)caculateTotalSize
-{
-    if ([YQAlbumManager sharedManager].isOriginal) {
-        CGFloat totalSize = [[YQAlbumManager sharedManager] caculateTotalSize];
-        NSArray *typeArray = @[@"bytes",@"KB",@"MB",@"GB",@"TB",@"PB", @"EB",@"ZB",@"YB"];
-        NSInteger index = 0;
-        while (totalSize > 1024) {
-            totalSize /= 1024.0;
-            index ++;
-        }
-        [self.bottomView configSizeTitle:[NSString stringWithFormat:@"%.1f %@", totalSize, typeArray[index]]];
-    }
 }
 
 #pragma mark - updateCachedAssets

@@ -12,7 +12,7 @@
 @class YQAlbumModel,YQAssetModel;
 
 @interface YQAlbumManager : NSObject
-@property (nonatomic, strong, readonly) NSArray *selectArray;
+@property (nonatomic, strong, readonly) NSMutableArray *selectArray;
 @property (nonatomic, assign) BOOL isOriginal;
 
 + (YQAlbumManager *)sharedManager;
@@ -32,5 +32,4 @@
 - (void)deleteObject:(YQAssetModel *)assetModel;
 - (BOOL)isContainObject:(NSString *)localIdentifier;
 
-- (CGFloat)caculateTotalSize;
 @end

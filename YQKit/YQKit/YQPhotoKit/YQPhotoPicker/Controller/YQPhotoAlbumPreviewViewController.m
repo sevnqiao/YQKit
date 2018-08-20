@@ -11,6 +11,7 @@
 #import "YQPhotoPreviewItemCell.h"
 #import "YQAlbumModel.h"
 #import "YQAlbumManager.h"
+#import "YQPhotoAlbumDetailBottomView.h"
 
 #define KMARGIN 20
 #define KSCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
@@ -22,6 +23,7 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) YQPhotoPreviewNavBar *navBarView;
 @property (nonatomic, strong) UIButton *selectButton;
+@property (nonatomic, strong) YQPhotoAlbumDetailBottomView *bottomView ;
 @property (nonatomic, assign) NSInteger currentIndex;
 @end
 
@@ -32,13 +34,18 @@
     self.view.clipsToBounds = YES;
     [self initCollectionView];
     [self initNavView];
+    [self initBottomPreview];
     [self.view addSubview:self.selectButton];
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.defautIndex inSection:0]
                                 atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
                                         animated:NO];
@@ -50,11 +57,6 @@
     
     YQAssetModel *assetModel = self.dataSourceArray[self.defautIndex];
     self.selectButton.selected = [[YQAlbumManager sharedManager] isContainObject:assetModel.asset.localIdentifier];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
 - (void)initNavView
@@ -92,11 +94,38 @@
     }
 }
 
+- (void)initBottomPreview
+{
+    YQPhotoAlbumDetailBottomView *bottomView = [[YQPhotoAlbumDetailBottomView alloc]initWithFrame:CGRectMake(0, KSCREEN_HEIGHT-120, KSCREEN_WIDTH, 120)];
+    [bottomView configBottomViewWithAssetArray:[YQAlbumManager sharedManager].selectArray];
+    [self.view addSubview:bottomView];
+    self.bottomView = bottomView;
+    
+    __weak typeof(self) weakSelf = self;
+    bottomView.selectHandle = ^(NSString *localIdentifier) {
+        NSIndexPath *indexPath = [weakSelf indexPathOfLocalIdentifier:localIdentifier];
+        [weakSelf.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    };
+}
+
+- (NSIndexPath *)indexPathOfLocalIdentifier:(NSString *)localIdentifier
+{
+    __block NSIndexPath *indexPath = nil;
+    [self.dataSourceArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        YQAssetModel *assetModel = obj;
+        if ([assetModel.asset.localIdentifier isEqualToString:localIdentifier]) {
+            indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
+            *stop = YES;
+        }
+    }];
+    return indexPath;
+}
+
 #pragma mark - getter / setter
 - (UIButton *)selectButton
 {
     if (!_selectButton) {
-        _selectButton = [[UIButton alloc]initWithFrame:CGRectMake(self.view.bounds.size.width-40, 75, 30, 30)];
+        _selectButton = [[UIButton alloc]initWithFrame:CGRectMake(self.view.bounds.size.width-40, 70, 40, 40)];
         [_selectButton setImage:[UIImage imageNamed:@"photo_select"] forState:UIControlStateSelected];
         [_selectButton setImage:[UIImage imageNamed:@"photo_unselect"] forState:UIControlStateNormal];
         [_selectButton addTarget:self action:@selector(select:) forControlEvents:UIControlEventTouchUpInside];
@@ -118,6 +147,8 @@
         title = [NSString stringWithFormat:@"%@ / %@", @(self.currentIndex + 1), @(self.dataSourceArray.count)];
     }
     [self.navBarView configTitleLabelWithTitle:title selectCount:[YQAlbumManager sharedManager].selectArray.count];
+    [self.bottomView configBottomViewWithAssetArray:[YQAlbumManager sharedManager].selectArray];
+    [self.bottomView selctItemWithLocalIdentifier:assetModel.asset.localIdentifier];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -148,6 +179,7 @@
     [UIView animateWithDuration:0.25 animations:^{
         self.navBarView.alpha = isShow?1:0;
         self.selectButton.alpha = isShow?1:0;
+        self.bottomView.alpha = isShow?([YQAlbumManager sharedManager].selectArray.count > 0 ? 1 : 0):0;
     }];
 }
 
@@ -166,6 +198,15 @@
     
     YQAssetModel *assetModel = self.dataSourceArray[index];
     self.selectButton.selected = [[YQAlbumManager sharedManager] isContainObject:assetModel.asset.localIdentifier];
+    
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+    CGFloat offsetX = (*targetContentOffset).x + scrollView.bounds.size.width/2;
+    NSInteger index = offsetX / scrollView.bounds.size.width;
+    YQAssetModel *assetModel = self.dataSourceArray[index];
+    [self.bottomView selctItemWithLocalIdentifier:assetModel.asset.localIdentifier];
 }
 
 - (void)updateCachedAssetsWithIndex:(NSInteger)index
