@@ -15,7 +15,11 @@
 		2610C1C82122BBE5008AAE9A /* YQAlbumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2610C1C72122BBE5008AAE9A /* YQAlbumManager.m */; };
 		2610C1CB2122C919008AAE9A /* YQAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2610C1CA2122C919008AAE9A /* YQAlbumModel.m */; };
 		2610C1CE2122CCB6008AAE9A /* YQPhotoAlbumDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2610C1CD2122CCB6008AAE9A /* YQPhotoAlbumDetailViewController.m */; };
+		26435F70212AB051002499AA /* YQPhotoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26435F6F212AB051002499AA /* YQPhotoEditViewController.m */; };
+		26435F74212AB0B2002499AA /* YQMosaicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26435F73212AB0B2002499AA /* YQMosaicView.m */; };
+		26435F76212AB34A002499AA /* abc.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 26435F75212AB34A002499AA /* abc.jpg */; };
 		266071302126A0290085942E /* YQPhotoAlbumDetailBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2660712F2126A0290085942E /* YQPhotoAlbumDetailBottomView.m */; };
+		267A25EC212C0462004EDB91 /* YQPhotoEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 267A25EB212C0462004EDB91 /* YQPhotoEditView.m */; };
 		26B847AB2121A23C00A39637 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B847AA2121A23C00A39637 /* AppDelegate.m */; };
 		26B847AE2121A23C00A39637 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B847AD2121A23C00A39637 /* ViewController.m */; };
 		26B847B32121A23F00A39637 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26B847B22121A23F00A39637 /* Assets.xcassets */; };
@@ -53,8 +57,15 @@
 		2610C1CA2122C919008AAE9A /* YQAlbumModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQAlbumModel.m; sourceTree = "<group>"; };
 		2610C1CC2122CCB6008AAE9A /* YQPhotoAlbumDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQPhotoAlbumDetailViewController.h; sourceTree = "<group>"; };
 		2610C1CD2122CCB6008AAE9A /* YQPhotoAlbumDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQPhotoAlbumDetailViewController.m; sourceTree = "<group>"; };
+		26435F6E212AB051002499AA /* YQPhotoEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQPhotoEditViewController.h; sourceTree = "<group>"; };
+		26435F6F212AB051002499AA /* YQPhotoEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQPhotoEditViewController.m; sourceTree = "<group>"; };
+		26435F72212AB0B2002499AA /* YQMosaicView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQMosaicView.h; sourceTree = "<group>"; };
+		26435F73212AB0B2002499AA /* YQMosaicView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQMosaicView.m; sourceTree = "<group>"; };
+		26435F75212AB34A002499AA /* abc.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = abc.jpg; sourceTree = "<group>"; };
 		2660712E2126A0290085942E /* YQPhotoAlbumDetailBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQPhotoAlbumDetailBottomView.h; sourceTree = "<group>"; };
 		2660712F2126A0290085942E /* YQPhotoAlbumDetailBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQPhotoAlbumDetailBottomView.m; sourceTree = "<group>"; };
+		267A25EA212C0462004EDB91 /* YQPhotoEditView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQPhotoEditView.h; sourceTree = "<group>"; };
+		267A25EB212C0462004EDB91 /* YQPhotoEditView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQPhotoEditView.m; sourceTree = "<group>"; };
 		26B847A62121A23B00A39637 /* YQKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YQKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B847A92121A23C00A39637 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		26B847AA2121A23C00A39637 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -117,6 +128,28 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		26435F6D212AB021002499AA /* YQPhotoEdit */ = {
+			isa = PBXGroup;
+			children = (
+				26435F71212AB06B002499AA /* Controller */,
+				267A25EA212C0462004EDB91 /* YQPhotoEditView.h */,
+				267A25EB212C0462004EDB91 /* YQPhotoEditView.m */,
+				26435F72212AB0B2002499AA /* YQMosaicView.h */,
+				26435F73212AB0B2002499AA /* YQMosaicView.m */,
+				26435F75212AB34A002499AA /* abc.jpg */,
+			);
+			path = YQPhotoEdit;
+			sourceTree = "<group>";
+		};
+		26435F71212AB06B002499AA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				26435F6E212AB051002499AA /* YQPhotoEditViewController.h */,
+				26435F6F212AB051002499AA /* YQPhotoEditViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		26B8479D2121A23B00A39637 = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +197,7 @@
 			children = (
 				26B847C12121A38000A39637 /* YQPhotoPicker */,
 				26B847C22121A38000A39637 /* YQPhotoBrowse */,
+				26435F6D212AB021002499AA /* YQPhotoEdit */,
 			);
 			path = YQPhotoKit;
 			sourceTree = "<group>";
@@ -349,6 +383,7 @@
 				26FB03862125780C00D2F226 /* photo_select@2x.png in Resources */,
 				26FB038D2125829A00D2F226 /* original_unselect@2x.png in Resources */,
 				26FB03602123F9DD00D2F226 /* YQPhotoAlbumListCell.xib in Resources */,
+				26435F76212AB34A002499AA /* abc.jpg in Resources */,
 				26B847B32121A23F00A39637 /* Assets.xcassets in Resources */,
 				26FB03872125780C00D2F226 /* photo_unselect@2x.png in Resources */,
 			);
@@ -388,11 +423,14 @@
 				2610C1CB2122C919008AAE9A /* YQAlbumModel.m in Sources */,
 				26B847CE2121A4E000A39637 /* YQPhotoItemCell.m in Sources */,
 				26B847AE2121A23C00A39637 /* ViewController.m in Sources */,
+				26435F74212AB0B2002499AA /* YQMosaicView.m in Sources */,
 				26B847B92121A23F00A39637 /* main.m in Sources */,
 				2610C1C82122BBE5008AAE9A /* YQAlbumManager.m in Sources */,
 				26FB03702125563E00D2F226 /* YQPhotoAlbumPreviewViewController.m in Sources */,
 				26FB035F2123F9DD00D2F226 /* YQPhotoAlbumListCell.m in Sources */,
+				26435F70212AB051002499AA /* YQPhotoEditViewController.m in Sources */,
 				2610C1C52122B739008AAE9A /* YQPhotoAlbumListViewController.m in Sources */,
+				267A25EC212C0462004EDB91 /* YQPhotoEditView.m in Sources */,
 				26FB0364212400F500D2F226 /* YQPhotoCollectionCell.m in Sources */,
 				2610C1B92122755C008AAE9A /* YQPhotoNavBarView.m in Sources */,
 				26FB038A2125800400D2F226 /* YQPhotoAlbumDetailToolView.m in Sources */,
