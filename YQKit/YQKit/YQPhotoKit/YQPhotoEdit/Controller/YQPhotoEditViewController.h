@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface YQPhotoEditViewController : UIViewController
-
+- (void)configWithImage:(id)targetImage complete:(void (^)(UIImage *image, NSError *error, NSDictionary *userInfo))complete;
 @end

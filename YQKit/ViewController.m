@@ -63,6 +63,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     switch (indexPath.row) {
         case 0:
             [self jumpToPhotoBrowse];
@@ -82,6 +84,15 @@
 {
     YQPhotoEditViewController *vc = [[YQPhotoEditViewController alloc] init];
     [self presentViewController:vc animated:YES completion:nil];
+    
+    [vc configWithImage:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534236096855&di=fca54631e350c49623d0a95a201fce1e&imgtype=0&src=http%3A%2F%2Fimage.uc.cn%2Fs%2Fwemedia%2Fs%2F2017%2Faf080383f88dc68113e16214c9bf6fa1x640x1137x72.jpeg" complete:^(UIImage *image, NSError *error, NSDictionary *userInfo) {
+        UIViewController *vc = [[UIViewController alloc]init];
+        UIImageView *imageview = [[UIImageView alloc]initWithFrame:vc.view.bounds];
+        imageview.image = image;
+        imageview.contentMode = UIViewContentModeScaleAspectFit;
+        [vc.view addSubview:imageview];
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
 }
 
 - (void)jumpToPhotoPicker

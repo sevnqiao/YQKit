@@ -11,6 +11,8 @@
 @interface YQMosaicView : UIView
 @property (nonatomic, strong) UIImage *mosaicImage;
 
+- (void)clear;
+- (void)back;
 - (void)didFinishHandleWithCompletionBlock:(void (^)(UIImage *image, NSError *error, NSDictionary *userInfo))completionBlock;
 
 @end

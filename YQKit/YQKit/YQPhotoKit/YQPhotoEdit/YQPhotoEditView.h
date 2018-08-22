@@ -11,4 +11,6 @@
 @interface YQPhotoEditView : UIView
 - (void)configWithImage:(UIImage *)image;
 - (void)didFinishHandleWithCompletionBlock:(void (^)(UIImage *image, NSError *error, NSDictionary *userInfo))completionBlock;
+- (void)clear;
+- (void)back;
 @end

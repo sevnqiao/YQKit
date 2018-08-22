@@ -68,4 +68,15 @@
 }
 
 
+//清除
+- (void)clear
+{
+    [self.mosaicView clear];
+}
+//撤回
+- (void)back
+{
+    [self.mosaicView back];
+}
+
 @end
