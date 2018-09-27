@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
+#import <Photos/Photos.h>
 
 @class PHAsset, PHFetchResult;
 /**
@@ -39,9 +41,8 @@
 
 typedef NS_ENUM (NSInteger, YQAssetMediaType) {
     YQAssetMediaTypeImage = 1,  // 照片
-    YQAssetMediaTypeLiveImage,  // 图片是一种动图(ios9之后) LivePhoto，长按之后会进行播放
+    YQAssetMediaTypeLivePhoto,  // LivePhoto
     YQAssetMediaTypeVideo,  // 视频
-    YQAssetMediaTypeAudio,  // 语音
 };
 /**
  *  单个图片管理对象
@@ -70,10 +71,6 @@ typedef NS_ENUM (NSInteger, YQAssetMediaType) {
 @property (nonatomic, strong) UIImage *thumbImage;
 
 /**
- *  是否选中,YES选中;反之未选中 默认NO
- */
-@property (nonatomic, assign, getter=isSelected) BOOL selected;
-/**
  *  文件类型
  */
 @property (nonatomic, assign) YQAssetMediaType type;
@@ -81,6 +78,10 @@ typedef NS_ENUM (NSInteger, YQAssetMediaType) {
  *  视频文件时，视频文件的时长
  */
 @property (nonatomic, copy) NSString *timeLength;
+
+@property (nonatomic, strong) AVPlayerItem *playerItem;
+
+@property (nonatomic, strong) PHLivePhoto *livePhoto API_AVAILABLE(ios(9.1));
 
 + (YQAssetModel *)modelWithAsset:(PHAsset *)asset;
 

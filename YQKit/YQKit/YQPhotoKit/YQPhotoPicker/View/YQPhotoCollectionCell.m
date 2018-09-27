@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *assetImageView;
 @property (weak, nonatomic) IBOutlet UIButton *selectButton;
 @property (weak, nonatomic) IBOutlet UIView *shadowView;
+@property (weak, nonatomic) IBOutlet UIView *livePhotoView;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (nonatomic, copy) NSString *localIdentifier;
 @end
 
@@ -41,10 +43,9 @@
         }];
     }
     
-    if ([[YQAlbumManager sharedManager] isContainObject:assetModel.asset.localIdentifier]) {
-        assetModel.selected = YES;
-    }
-    self.selectButton.selected = assetModel.isSelected;
+    self.selectButton.selected = [[YQAlbumManager sharedManager] isContainObject:assetModel.asset.localIdentifier];
+    self.livePhotoView.hidden = (assetModel.type != YQAssetMediaTypeLivePhoto);
+    self.timeLabel.text = (assetModel.type == YQAssetMediaTypeVideo) ? assetModel.timeLength : @"";
 }
 
 - (IBAction)select:(UIButton *)sender {

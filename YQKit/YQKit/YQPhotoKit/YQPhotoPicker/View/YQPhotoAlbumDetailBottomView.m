@@ -34,13 +34,6 @@
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithFrame:self.bounds];
     effectView.effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     [self addSubview:effectView];
-    
-    if (@available(iOS 10.0, *)) {
-        UIViewPropertyAnimator *animator = [[UIViewPropertyAnimator alloc] initWithDuration:0.1 curve:UIViewAnimationCurveLinear animations:^{
-            effectView.effect = nil;
-        }];
-        animator.fractionComplete = 0.3;
-    }
 }
 
 - (void)initCollectionView

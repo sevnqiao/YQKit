@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26051A082136898A0051D9C8 /* YQPhotoVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26051A072136898A0051D9C8 /* YQPhotoVideoView.m */; };
+		26051A0A213696830051D9C8 /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26051A09213696830051D9C8 /* play@2x.png */; };
 		2610C1B621226B75008AAE9A /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 2610C1B521226B75008AAE9A /* back.png */; };
 		2610C1B92122755C008AAE9A /* YQPhotoNavBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2610C1B82122755C008AAE9A /* YQPhotoNavBarView.m */; };
 		2610C1BF2122A4D5008AAE9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2610C1BE2122A4D5008AAE9A /* LaunchScreen.xib */; };
@@ -20,12 +22,14 @@
 		26435F76212AB34A002499AA /* abc.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 26435F75212AB34A002499AA /* abc.jpg */; };
 		266071302126A0290085942E /* YQPhotoAlbumDetailBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2660712F2126A0290085942E /* YQPhotoAlbumDetailBottomView.m */; };
 		267A25EC212C0462004EDB91 /* YQPhotoEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 267A25EB212C0462004EDB91 /* YQPhotoEditView.m */; };
+		2685356F21357337007D0567 /* live_photo_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2685356E21357337007D0567 /* live_photo_icon@2x.png */; };
 		26B847AB2121A23C00A39637 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B847AA2121A23C00A39637 /* AppDelegate.m */; };
 		26B847AE2121A23C00A39637 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B847AD2121A23C00A39637 /* ViewController.m */; };
 		26B847B32121A23F00A39637 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26B847B22121A23F00A39637 /* Assets.xcassets */; };
 		26B847B92121A23F00A39637 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B847B82121A23F00A39637 /* main.m */; };
 		26B847CB2121A3D900A39637 /* YQPhotoBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B847C92121A3D900A39637 /* YQPhotoBrowseViewController.m */; };
 		26B847CE2121A4E000A39637 /* YQPhotoItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B847CD2121A4E000A39637 /* YQPhotoItemCell.m */; };
+		26ED9D36212ED66B00524574 /* takePicture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26ED9D34212ED66A00524574 /* takePicture@2x.png */; };
 		26FB035F2123F9DD00D2F226 /* YQPhotoAlbumListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FB035D2123F9DD00D2F226 /* YQPhotoAlbumListCell.m */; };
 		26FB03602123F9DD00D2F226 /* YQPhotoAlbumListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FB035E2123F9DD00D2F226 /* YQPhotoAlbumListCell.xib */; };
 		26FB0364212400F500D2F226 /* YQPhotoCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FB0362212400F500D2F226 /* YQPhotoCollectionCell.m */; };
@@ -43,6 +47,9 @@
 
 /* Begin PBXFileReference section */
 		01A6B978966F54F0AB37BFCC /* Pods-YQKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YQKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-YQKit/Pods-YQKit.release.xcconfig"; sourceTree = "<group>"; };
+		26051A062136898A0051D9C8 /* YQPhotoVideoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQPhotoVideoView.h; sourceTree = "<group>"; };
+		26051A072136898A0051D9C8 /* YQPhotoVideoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQPhotoVideoView.m; sourceTree = "<group>"; };
+		26051A09213696830051D9C8 /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
 		2610C1B521226B75008AAE9A /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		2610C1B72122755C008AAE9A /* YQPhotoNavBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQPhotoNavBarView.h; sourceTree = "<group>"; };
 		2610C1B82122755C008AAE9A /* YQPhotoNavBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQPhotoNavBarView.m; sourceTree = "<group>"; };
@@ -66,6 +73,7 @@
 		2660712F2126A0290085942E /* YQPhotoAlbumDetailBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQPhotoAlbumDetailBottomView.m; sourceTree = "<group>"; };
 		267A25EA212C0462004EDB91 /* YQPhotoEditView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQPhotoEditView.h; sourceTree = "<group>"; };
 		267A25EB212C0462004EDB91 /* YQPhotoEditView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQPhotoEditView.m; sourceTree = "<group>"; };
+		2685356E21357337007D0567 /* live_photo_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "live_photo_icon@2x.png"; sourceTree = "<group>"; };
 		26B847A62121A23B00A39637 /* YQKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YQKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B847A92121A23C00A39637 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		26B847AA2121A23C00A39637 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -78,6 +86,7 @@
 		26B847CA2121A3D900A39637 /* YQPhotoBrowseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQPhotoBrowseViewController.h; sourceTree = "<group>"; };
 		26B847CC2121A4E000A39637 /* YQPhotoItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQPhotoItemCell.h; sourceTree = "<group>"; };
 		26B847CD2121A4E000A39637 /* YQPhotoItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQPhotoItemCell.m; sourceTree = "<group>"; };
+		26ED9D34212ED66A00524574 /* takePicture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "takePicture@2x.png"; sourceTree = "<group>"; };
 		26FB035C2123F9DD00D2F226 /* YQPhotoAlbumListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQPhotoAlbumListCell.h; sourceTree = "<group>"; };
 		26FB035D2123F9DD00D2F226 /* YQPhotoAlbumListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQPhotoAlbumListCell.m; sourceTree = "<group>"; };
 		26FB035E2123F9DD00D2F226 /* YQPhotoAlbumListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQPhotoAlbumListCell.xib; sourceTree = "<group>"; };
@@ -254,6 +263,9 @@
 		26FB037121255AE300D2F226 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				26051A09213696830051D9C8 /* play@2x.png */,
+				2685356E21357337007D0567 /* live_photo_icon@2x.png */,
+				26ED9D34212ED66A00524574 /* takePicture@2x.png */,
 				26FB038C2125829900D2F226 /* original_select@2x.png */,
 				26FB038B2125829900D2F226 /* original_unselect@2x.png */,
 				26FB03842125780B00D2F226 /* photo_select@2x.png */,
@@ -294,6 +306,8 @@
 				26FB03892125800400D2F226 /* YQPhotoAlbumDetailToolView.m */,
 				2660712E2126A0290085942E /* YQPhotoAlbumDetailBottomView.h */,
 				2660712F2126A0290085942E /* YQPhotoAlbumDetailBottomView.m */,
+				26051A062136898A0051D9C8 /* YQPhotoVideoView.h */,
+				26051A072136898A0051D9C8 /* YQPhotoVideoView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -376,10 +390,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2685356F21357337007D0567 /* live_photo_icon@2x.png in Resources */,
 				26FB038E2125829A00D2F226 /* original_select@2x.png in Resources */,
+				26051A0A213696830051D9C8 /* play@2x.png in Resources */,
 				2610C1B621226B75008AAE9A /* back.png in Resources */,
 				26FB0365212400F500D2F226 /* YQPhotoCollectionCell.xib in Resources */,
 				2610C1BF2122A4D5008AAE9A /* LaunchScreen.xib in Resources */,
+				26ED9D36212ED66B00524574 /* takePicture@2x.png in Resources */,
 				26FB03862125780C00D2F226 /* photo_select@2x.png in Resources */,
 				26FB038D2125829A00D2F226 /* original_unselect@2x.png in Resources */,
 				26FB03602123F9DD00D2F226 /* YQPhotoAlbumListCell.xib in Resources */,
@@ -434,6 +451,7 @@
 				26FB0364212400F500D2F226 /* YQPhotoCollectionCell.m in Sources */,
 				2610C1B92122755C008AAE9A /* YQPhotoNavBarView.m in Sources */,
 				26FB038A2125800400D2F226 /* YQPhotoAlbumDetailToolView.m in Sources */,
+				26051A082136898A0051D9C8 /* YQPhotoVideoView.m in Sources */,
 				26B847AB2121A23C00A39637 /* AppDelegate.m in Sources */,
 				26FB037721255B7900D2F226 /* YQPhotoPreviewItemCell.m in Sources */,
 				26B847CB2121A3D900A39637 /* YQPhotoBrowseViewController.m in Sources */,

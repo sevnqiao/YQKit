@@ -68,7 +68,7 @@
     [self.navBarView handleWithBackHandle:^{
         [weakSelf.navigationController popViewControllerAnimated:YES];
     } nextHandle:^{
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        [weakSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
     }];
 }
 
@@ -159,10 +159,12 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    YQPhotoPreviewItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"YQPhotoPreviewItemCellIdentifier" forIndexPath:indexPath];
     YQAssetModel *assetModel = self.dataSourceArray[indexPath.row];
+
+    __weak typeof(self) weakSelf = self;
+    YQPhotoPreviewItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"YQPhotoPreviewItemCellIdentifier" forIndexPath:indexPath];
     [cell configImageViewWith:assetModel localIdentifier:assetModel.asset.localIdentifier  tapHandle:^{
-        [self showHideNavBarView];
+        [weakSelf showHideNavBarView];
     }];
     return cell;
 }
@@ -221,5 +223,8 @@
     }
 }
 
-
+- (void)dealloc
+{
+    
+}
 @end

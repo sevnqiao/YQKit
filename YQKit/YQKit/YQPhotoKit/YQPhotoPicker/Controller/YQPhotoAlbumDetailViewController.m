@@ -18,7 +18,7 @@
 #define KISIPHONEX (CGSizeEqualToSize(CGSizeMake(375.f, 812.f), [UIScreen mainScreen].bounds.size) || CGSizeEqualToSize(CGSizeMake(812.f, 375.f), [UIScreen mainScreen].bounds.size))
 #define KNAVBAR_HEIGHT (KISIPHONEX?96:64)
 
-@interface YQPhotoAlbumDetailViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface YQPhotoAlbumDetailViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) YQPhotoAlbumDetailToolView *bottomView;
 @property (nonatomic, strong) NSMutableArray *dataSourceArray;
@@ -88,6 +88,7 @@
     [self.view addSubview:collectionView];
     self.collectionView = collectionView;
     [collectionView registerNib:[UINib nibWithNibName:@"YQPhotoCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"YQPhotoCollectionCellIdentifier"];
+    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCellIdentifier"];
 }
 
 - (void)initBottomView
@@ -116,34 +117,48 @@
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.dataSourceArray.count;
+    return self.dataSourceArray.count + 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    YQPhotoCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"YQPhotoCollectionCellIdentifier" forIndexPath:indexPath];
-    YQAssetModel *assetModel = self.dataSourceArray[indexPath.row];
-    CGSize itemSize = ((UICollectionViewFlowLayout *)collectionView.collectionViewLayout).itemSize;
-    [cell configCellWithAssetModel:assetModel targetSize:itemSize localIdentifier:assetModel.asset.localIdentifier];
-    cell.selectHandle = ^{
-        [self selectWithIndexPath:indexPath];
-    };
-    return cell;
+    if (indexPath.row == 0) {
+        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"UICollectionViewCellIdentifier" forIndexPath:indexPath];
+        UIImageView *imageView = cell.contentView.subviews.firstObject;
+        if (imageView == nil) {
+            imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"takePicture"]];
+            imageView.contentMode = UIViewContentModeScaleAspectFit;
+            imageView.frame = cell.contentView.frame;
+            [cell.contentView addSubview:imageView];
+        }
+        return cell;
+    } else {
+        YQPhotoCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"YQPhotoCollectionCellIdentifier" forIndexPath:indexPath];
+        YQAssetModel *assetModel = self.dataSourceArray[indexPath.row - 1];
+        CGSize itemSize = ((UICollectionViewFlowLayout *)collectionView.collectionViewLayout).itemSize;
+        [cell configCellWithAssetModel:assetModel targetSize:itemSize localIdentifier:assetModel.asset.localIdentifier];
+        cell.selectHandle = ^{
+            [self selectWithIndexPath:indexPath];
+        };
+        return cell;
+    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self jumpToPreviewControllerWithDataSource:self.dataSourceArray currentIndex:indexPath.row isPreview:NO];
+    if (indexPath.row == 0) {
+        [self jumpToCamera];
+    } else {
+        [self jumpToPreviewControllerWithDataSource:self.dataSourceArray currentIndex:indexPath.row-1 isPreview:NO];
+    }
 }
 
 - (void)selectWithIndexPath:(NSIndexPath *)indexPath
 {
-    YQAssetModel *model = self.dataSourceArray[indexPath.row];
-    if (model.isSelected) {
-        model.selected = NO;
+    YQAssetModel *model = self.dataSourceArray[indexPath.row-1];
+    if ([[YQAlbumManager sharedManager] isContainObject:model.asset.localIdentifier]) {
         [[YQAlbumManager sharedManager] deleteObject:model];
     } else {
-        model.selected = YES;
         [[YQAlbumManager sharedManager] addObject:model];
     }
     [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
@@ -233,6 +248,28 @@
     }
 }
 
+
+#pragma mark - camera
+- (void)jumpToCamera
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIImagePickerController *pickerVC = [[UIImagePickerController alloc]init];
+        pickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+        pickerVC.delegate = self;
+        [self presentViewController:pickerVC animated:YES completion:nil];
+    }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    UIImage *image = info[@"UIImagePickerControllerOriginalImage"];
+    [[YQAlbumManager sharedManager]save:image complete:^(YQAssetModel *assetModel) {
+        [[YQAlbumManager sharedManager]addObject:assetModel];
+        [self.dataSourceArray insertObject:assetModel atIndex:0];
+        [self.collectionView reloadData];
+    }];
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 #pragma mark - Description

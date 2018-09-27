@@ -21,6 +21,8 @@
 - (void)getCamerRollAlbumWithComplete:(void(^)(YQAlbumModel *model))complete;
 - (void)getAllAlbumsWithCompletion:(void (^) (NSArray *allAlbumsArray))completion;
 - (void)getPhotoWithAsset:(PHAsset *)asset photoSize:(CGSize)photoSize isSynchronous:(BOOL)isSynchronous complete:(void(^)(UIImage *image))complete;
+- (void)getLivePhotoWithAsset:(PHAsset *)asset photoSize:(CGSize)photoSize complete:(void(^)(PHLivePhoto *livePhoto))complete API_AVAILABLE(ios(9.1));
+- (void)getVideoWithAsset:(PHAsset *)asset complete:(void(^)(AVPlayerItem *playerItem))complete;
 - (NSArray *)getAssetWithFetchResult:(PHFetchResult *)fetchResult;
 
 - (void)startCaching:(NSArray *)assetArray targetSize:(CGSize)targetSize options:(nullable PHImageRequestOptions *)options;
@@ -32,4 +34,5 @@
 - (void)deleteObject:(YQAssetModel *)assetModel;
 - (BOOL)isContainObject:(NSString *)localIdentifier;
 
+- (void)save:(UIImage *)image complete:(void(^)(YQAssetModel *assetModel))complete;
 @end
