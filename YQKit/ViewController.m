@@ -11,20 +11,45 @@
 #import "YQPhotoPickerViewController.h"
 #import "YQPhotoEditViewController.h"
 #import "YQPopupMenuViewController.h"
+#import "YQSliderViewController.h"
 
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
-
+@property (nonatomic, strong) NSMutableArray *dataArray;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationController.navigationBar.translucent = NO;
 
     UITableView *tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
+    
+    self.dataArray = [NSMutableArray array];
+    [self.dataArray addObject:[self createItemWithTitle:@"图片浏览器" handle:^{
+        [self jumpToPhotoBrowse];
+    }]];
+    
+    [self.dataArray addObject:[self createItemWithTitle:@"选择图片" handle:^{
+        [self jumpToPhotoPicker];
+    }]];
+    
+    [self.dataArray addObject:[self createItemWithTitle:@"图片编辑" handle:^{
+        [self jumpToPhotoEdit];
+    }]];
+    
+    [self.dataArray addObject:[self createItemWithTitle:@"弹出菜单" handle:^{
+        [self jumpToPopMenuController];
+    }]];
+    
+    [self.dataArray addObject:[self createItemWithTitle:@"sliderView" handle:^{
+        [self jumpToSliderController];
+    }]];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -32,10 +57,17 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
+- (NSMutableDictionary *)createItemWithTitle:(NSString *)title handle:(void(^)(void))handle {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:title forKey:@"title"];
+    [dict setValue:handle forKey:@"handle"];
+    return dict;
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -44,46 +76,16 @@
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCellIdentifier"];
     }
-    switch (indexPath.row) {
-        case 0:
-            cell.textLabel.text = @"图片浏览器";
-            break;
-        case 1:
-            cell.textLabel.text = @"选择图片";
-            break;
-        case 2:
-            cell.textLabel.text = @"图片编辑";
-            break;
-        case 3:
-            cell.textLabel.text = @"弹出菜单";
-            break;
-            
-        default:
-            break;
-    }
-    
+    cell.textLabel.text = self.dataArray[indexPath.row][@"title"];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    switch (indexPath.row) {
-        case 0:
-            [self jumpToPhotoBrowse];
-            break;
-        case 1:
-            [self jumpToPhotoPicker];
-            break;
-        case 2:
-            [self jumpToPhotoEdit];
-            break;
-        case 3:
-            [self jumpToPopMenuController];
-            break;
-        default:
-            break;
+    void(^handle)(void) = self.dataArray[indexPath.row][@"handle"];
+    if (handle) {
+        handle();
     }
 }
 
@@ -118,6 +120,10 @@
 
 - (void)jumpToPopMenuController {
     YQPopupMenuViewController *vc = [[YQPopupMenuViewController alloc] initWithNibName:@"YQPopupMenuViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+- (void)jumpToSliderController {
+    YQSliderViewController *vc = [[YQSliderViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 @end
