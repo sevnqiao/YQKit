@@ -9,11 +9,14 @@
 #import "YQSliderViewController.h"
 #import "YQSliderView.h"
 
-@interface YQSliderViewController ()<UIScrollViewDelegate>
+@interface YQSliderViewController ()<UIScrollViewDelegate, YQSliderViewDelegate>
 @property (nonatomic, strong) YQSliderView *slider;
+@property (nonatomic, strong) UIScrollView *scrollView;
 @end
 
-@implementation YQSliderViewController
+@implementation YQSliderViewController{
+    BOOL isTap;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,7 +25,7 @@
     
     YQSliderView *slider = [[YQSliderView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 60)];
     slider.sliderAlignment = YQSliderViewAlignmentNatural;
-    [slider configSliderViewWithDataArray:@[@"生活", @"工作", @"环游世界", @"睡觉觉"]];
+    slider.delegate = self;
     [self.view addSubview:slider];
     self.slider = slider;
     
@@ -30,6 +33,7 @@
     scrollView.delegate = self;
     scrollView.pagingEnabled = YES;
     [self.view addSubview:scrollView];
+    self.scrollView = scrollView;
     scrollView.contentSize = CGSizeMake(self.view.bounds.size.width * 4, self.view.bounds.size.height - 60);
     
     for (int i = 0; i < 4; i++) {
@@ -41,11 +45,27 @@
     
 }
 
+#pragma mark - YQSliderViewDelegate
+- (NSArray *)dataSourceInSliderView:(YQSliderView *)sliderView {
+    return @[@"生活", @"工作", @"环游世界", @"睡觉觉"];
+}
+
+- (void)sliderView:(YQSliderView *)sliderView selectAtIndex:(NSInteger)index {
+    isTap = YES;
+    [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width * index, 0) animated:YES];
+}
+
+
+#pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat progress = scrollView.contentOffset.x / scrollView.bounds.size.width;
-    [self.slider updateIndicationViewWithProgress:progress];
-    
-    
+    if (!isTap) {
+        CGFloat progress = scrollView.contentOffset.x / scrollView.bounds.size.width;
+        [self.slider updateIndicationViewWithProgress:progress];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    isTap = NO;
 }
 
 @end

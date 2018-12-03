@@ -13,6 +13,15 @@ typedef NS_ENUM(NSUInteger, YQSliderViewAlignment) {
     YQSliderViewAlignmentNatural
 };
 
+@class YQSliderView;
+
+@protocol YQSliderViewDelegate <NSObject>
+@required
+- (NSArray *)dataSourceInSliderView:(YQSliderView *)sliderView;
+@optional
+- (void)sliderView:(YQSliderView *)sliderView selectAtIndex:(NSInteger)index;
+@end
+
 @interface YQSliderView : UIView
 
 @property (nonatomic, assign) YQSliderViewAlignment sliderAlignment;
@@ -21,9 +30,9 @@ typedef NS_ENUM(NSUInteger, YQSliderViewAlignment) {
 @property (nonatomic, assign) UIColor *indicationViewColor;
 @property (nonatomic, assign) NSInteger indicationViewHeight;
 @property (nonatomic, assign) CGFloat itemSpace;
+@property (nonatomic, weak) id <YQSliderViewDelegate>delegate;
 
 - (void)updateIndicationViewWithProgress:(CGFloat)progress;
-- (void)configSliderViewWithDataArray:(NSArray *)dataArray;
 
 @end
 

@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSArray *dataArray;
 @property (nonatomic, strong) NSMutableArray *sliderLabelArray;
 
+@property (nonatomic, assign) CGFloat progress;
 @end
 
 @implementation YQSliderView
@@ -26,7 +27,8 @@
         _selectColor = [UIColor redColor];
         _indicationViewColor = _selectColor;
         _itemSpace = 30;
-        
+        _progress = 0;
+        _indicationViewHeight = 5;
         
         
         [self initSubView];
@@ -38,16 +40,23 @@
     self.backgroundColor = [UIColor whiteColor];
     [self addSubview:self.scrollView];
     [self.scrollView addSubview:self.indicationView];
+    
+    
 }
 
-- (void)configSliderViewWithDataArray:(NSArray *)dataArray {
-    self.dataArray = dataArray;
+- (void)setDelegate:(id<YQSliderViewDelegate>)delegate {
+    _delegate = delegate;
+    [self configSliderView];
+}
+
+- (void)configSliderView {
+    self.dataArray = [NSArray arrayWithArray:[self.delegate dataSourceInSliderView:self]];
     
-    for (int i = 0; i < dataArray.count; i++) {
+    for (int i = 0; i < self.dataArray.count; i++) {
         YQSliderLabel *sliderLabel = [[YQSliderLabel alloc]init];
         sliderLabel.font = [UIFont systemFontOfSize:14];
         sliderLabel.userInteractionEnabled = YES;
-        sliderLabel.text = dataArray[i];
+        sliderLabel.text = self.dataArray[i];
         sliderLabel.tag = i;
         sliderLabel.textColor = self.normalColor;
         sliderLabel.fillColor = i == 0 ? self.selectColor : self.normalColor;
@@ -62,13 +71,41 @@
 }
 
 - (void)tap:(UITapGestureRecognizer *)tap {
-    NSUInteger tag = tap.view.tag;
-    [self updateIndicationViewWithProgress:tag];
+
+    CGRect currentIndicationViewFrame = self.indicationView.frame;
+    YQSliderLabel *selectLabel = (YQSliderLabel *)tap.view;
+    
+    CGRect targetFrame = CGRectZero;
+    if (self.sliderAlignment == YQSliderViewAlignmentJustified) {
+        targetFrame = CGRectMake(currentIndicationViewFrame.size.width * tap.view.tag, currentIndicationViewFrame.origin.y, currentIndicationViewFrame.size.width, currentIndicationViewFrame.size.height);
+    } else if (self.sliderAlignment == YQSliderViewAlignmentNatural) {
+        targetFrame = CGRectMake(CGRectGetMinX(selectLabel.frame), currentIndicationViewFrame.origin.y, selectLabel.frame.size.width, currentIndicationViewFrame.size.height);
+    }
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        self.indicationView.frame = targetFrame;
+        for (YQSliderLabel *itemView in self.sliderLabelArray) {
+            if (itemView.tag == tap.view.tag) {
+                itemView.textColor = self.normalColor;
+                itemView.fillColor = self.selectColor;
+                itemView.progress = 1;
+            } else {
+                itemView.textColor = self.normalColor;
+                itemView.fillColor = self.selectColor;
+                itemView.progress = 0;
+            }
+        }
+    }];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(sliderView:selectAtIndex:)]) {
+        [self.delegate sliderView:self selectAtIndex:tap.view.tag];
+    }
 }
 
 
 // 设置偏移量
 - (void)updateIndicationViewWithProgress:(CGFloat)progress {
+
     if (!self.sliderLabelArray || self.sliderLabelArray.count == 0) {
         return;
     }
@@ -103,36 +140,18 @@
             itemView.progress = 0;
         }
     }
-
     
-    [self slideBottomViewToIndexOffset:progress];
+    [self slideBottomViewWithCurrentItemView:leftItem nextItemView:rightItem progress:progress-index];
 }
 
 #pragma mark - setBottomView
+- (void)slideBottomViewWithCurrentItemView:(YQSliderLabel *)currentItemView nextItemView:(YQSliderLabel *)nextItemView progress:(CGFloat)progress {
 
-- (void)slideBottomViewWithCurrentItem:(NSInteger)currentIten nextItem:(NSInteger)nextItem {
-    
-}
-
-- (void)slideBottomViewToIndexOffset:(CGFloat)indexOffset {
-    
-    NSInteger selectIndex = indexOffset - CGFLOAT_MIN;
-    
-    CGFloat progress = indexOffset - selectIndex;
-    
-
-    YQSliderLabel *currentItemView = self.sliderLabelArray[selectIndex];
-    YQSliderLabel *nextItemView = nil;
     CGFloat x = 0;
     CGFloat w = 0;
     CGFloat currentWidth = currentItemView.frame.size.width;
     
-    if (selectIndex < self.sliderLabelArray.count - 1) {
-        nextItemView = self.sliderLabelArray[selectIndex + 1];
-    }
-    
-    
-    if ((selectIndex == 0 && progress < 0) || (selectIndex == self.sliderLabelArray.count - 1 && progress > 0)) {
+    if ((currentItemView.tag == 0 && progress < 0) || (currentItemView.tag == self.sliderLabelArray.count - 1 && progress > 0)) {
         x = CGRectGetMinX(currentItemView.frame) + (CGRectGetMaxX(currentItemView.frame) - CGRectGetMinX(currentItemView.frame)) * progress;
         w = currentWidth + (currentWidth - currentWidth) * progress;
     } else {
@@ -150,10 +169,8 @@
             w = currentWidth  + (nextWidth - currentWidth) * progress + (1-progress) * _itemSpace * 2;
         }
     }
-    self.indicationView.frame = CGRectMake(x, self.frame.size.height - 5, w, 5);
+    self.indicationView.frame = CGRectMake(x, self.frame.size.height - self.indicationViewHeight, w, self.indicationViewHeight);
 }
-
-
 
 #pragma mark - layout subviews
 - (void)layoutSubviews {
@@ -188,7 +205,7 @@
         CGFloat w = self.bounds.size.width / self.sliderLabelArray.count;
         self.indicationView.frame = CGRectMake(0, self.bounds.size.height - self.indicationViewHeight, w, self.indicationViewHeight);
     } else if (self.sliderAlignment == YQSliderViewAlignmentNatural) { // 自由对齐
-        CGFloat w = [self calculateWidthWithContent:self.dataArray[0] font:[UIFont systemFontOfSize:14]];
+        CGFloat w = [self calculateWidthWithContent:self.dataArray.firstObject font:[UIFont systemFontOfSize:14]];
         self.indicationView.frame = CGRectMake(self.itemSpace, self.bounds.size.height - self.indicationViewHeight, w, self.indicationViewHeight);
     }
     self.indicationView.layer.cornerRadius = self.indicationViewHeight / 2;
